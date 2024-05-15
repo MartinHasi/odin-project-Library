@@ -35,3 +35,11 @@ main
     box-shadow: 3px 3px;
     border: 5px ridge;
 }
+#input_data, input, select
+{
+    flex-direction: column;
+    width: 50%;
+    height: 50%;
+    font-size: 30px;
+    gap: 10px;
+}
