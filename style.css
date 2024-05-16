@@ -2,6 +2,7 @@
 {
     font-family: 'Courier New', Courier, monospace;
     text-align: center;
+    gap: 20px;
 }
 body
 {
@@ -35,11 +36,22 @@ main
     box-shadow: 3px 3px;
     border: 5px ridge;
 }
+#input_data
+{
+    width: 30%;
+}
 #input_data, input, select
 {
     flex-direction: column;
-    width: 50%;
-    height: 50%;
     font-size: 30px;
-    gap: 10px;
+    margin-top: 20px;
+    height: 50%;
+    gap: 20px;
+}
+button
+{
+    border-radius: 0 80px 0 80px;
+    font-size: 1.3rem;
+    width: 75%;
+    
 }
