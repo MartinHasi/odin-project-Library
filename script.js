@@ -56,14 +56,35 @@ function showBook(array)
         authorHeader.textContent = element.author;
         let pagesHeader = document.createElement('h3');
         pagesHeader.textContent = element.pages;
-        let readHeader = document.createElement('h3');
+        let readHeader = document.createElement('button');
         readHeader.textContent = element.read;
-        debugging(titleHeader, authorHeader, pagesHeader, readHeader);
+        //debugging(titleHeader, authorHeader, pagesHeader, readHeader);
+        let deleteHeader = document.createElement('button');
+        deleteHeader.textContent = 'Delete';
         container.appendChild(titleHeader);
         container.appendChild(authorHeader);
         container.appendChild(pagesHeader);
         container.appendChild(readHeader);
+        container.appendChild(deleteHeader);
         bookContainer.appendChild(container);
+        // update Read Status
+        readHeader.addEventListener('click', (e => {
+            if(e.target.textContent === 'read')
+            {
+                e.target.textContent = 'not read';
+            }
+            else
+            {
+                e.target.textContent = 'read';
+            }
+        }));
+        // delete Book
+        deleteHeader.addEventListener('click', (e) => {
+
+            myLibrary.splice(e.target,1);
+            reloadBookContent();
+            showBook(myLibrary);
+        });
 
     });
 }
@@ -74,6 +95,17 @@ function reloadBookContent()
     bookContainer.replaceChildren();
 }
 
+// clear input function
+function clearInput()
+{
+    titleName.value = '';
+    authorName.value = '';
+    pageNumber.value = '';
+    readBook.selectedIndex = 0;
+}
+
+
+// debugging function for read Varables
 function debugging(...value)
 {
     console.log(...value);
@@ -82,4 +114,5 @@ function debugging(...value)
 saveButton.addEventListener('click', () => {
     addBookToLibrary();
     dialogForm.close();
+    clearInput();
 });
